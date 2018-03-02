@@ -3,6 +3,8 @@
 namespace MyAppNamespace\Controllers;
 
 
+use MyAppNamespace\Models\Movie;
+use MyAppNamespace\Repos\Movies\MoviesRepo;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -19,17 +21,13 @@ class MoviesController extends Controller
      */
     public function getAll( Request $request, Response $response)
     {
-        $movies = [
-            [
-                "id" => 1,
-                "name" =>"Black Panther"
-            ],
-            [
-                "id" => 2,
-                "name" => "Terminator 2"
-            ]
-        ];
+        $movies = MoviesRepo::get()->getAll();
 
-        return $this->dispatch( $movies );
+        $moviesJson = [];
+        foreach ($movies as $movie){
+            array_push( $moviesJson, $movie->toJson());
+        }
+
+        return $this->dispatch( $moviesJson );
     }
 }
