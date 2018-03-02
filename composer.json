@@ -1,0 +1,25 @@
+{
+    "name": "bmutinda/slim-starter-api",
+    "description": "API starter template for slim",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mutinda Boniface",
+            "email": "hello@bmutinda.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "slim/slim": "^3.0"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "4.0.*"
+    },
+
+    "autoload": {
+      "psr-4": {
+        "MyAppNamespace\\": "src//app/"
+      }
+    }
+}
